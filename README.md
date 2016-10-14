@@ -1,4 +1,3 @@
-# autotest
 自动化测试脚本
 
 使用pyinstaller 打包应用为exe文件
