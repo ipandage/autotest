@@ -19,7 +19,7 @@ class Login:
         driver.find_element_by_id("captcha").clear()
         driver.find_element_by_id("username").send_keys(user)
         driver.find_element_by_id("password").send_keys(password)
-        driver.find_element_by_id("captcha").send_keys("ttb!@#$")
+        driver.find_element_by_id("captcha").send_keys("")
         driver.find_element_by_class_name("loginBtn").click()
         time.sleep(1)
 
