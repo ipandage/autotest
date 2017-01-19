@@ -58,10 +58,55 @@ class PetShopMember:
             driver.find_element_by_xpath('//*[@id="simple-table"]/tbody/tr[1]/td[5]/a[1]').click()
 
         time.sleep(1)
-        driver.find_element_by_xpath('//*[@id="faq-tab-1"]/div/div[1]/div[3]/span[2]/a').click()
+        driver.find_element_by_xpath('//*[@id="rechargeAccountButton"]/span[1]/a').click()
 
         time.sleep(1)
         driver.find_element_by_name("RechargeAmount").send_keys("1000")
         driver.find_element_by_name("promotionalBalance").send_keys("200")
         driver.execute_script('$("#rechargeButton").click();')
+
+    # 开次卡
+    def openNumberCard(self):
+        driver = self.driver
+        domain = self.domain
+
+        driver.get(domain + "/admin/petShopMember/list.jhtml")
+
+        if (self.isChian == 1):
+            driver.find_element_by_xpath('//*[@id="simple-table"]/tbody/tr[1]/td[6]/a[1]').click()
+        else:
+            driver.find_element_by_xpath('//*[@id="simple-table"]/tbody/tr[1]/td[5]/a[1]').click()
+
+        time.sleep(2)
+        driver.find_element_by_xpath('//*[@id="rechargeAccountButton"]/span[2]/a').click()
+        time.sleep(1)
+        driver.find_element_by_name("RechargeAmount").send_keys("100")
+        driver.find_element_by_name("accountBalance").send_keys("5")
+        driver.find_element_by_id("openNumberCardButton").click()
+
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="rechargeAccountButton"]/span[2]/a').click()
+        time.sleep(1)
+        driver.execute_script('$("input[name=businessType]").eq(1).iCheck("check")')
+
+        driver.find_element_by_name("RechargeAmount").send_keys("100")
+        driver.find_element_by_name("accountBalance").send_keys("4")
+        driver.find_element_by_id("openNumberCardButton").click()
+
+        # 续次
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="faq-tab-1"]/div[2]/div[1]/div[2]/span/a').click()
+        time.sleep(1)
+        driver.find_element_by_name("rechargeAmount").send_keys("100")
+        driver.find_element_by_name("rechargeCount").send_keys("4")
+        driver.find_element_by_id("renewalsNumberCardButton").click()
+
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="faq-tab-1"]/div[3]/div[1]/div[2]/span/a').click()
+        time.sleep(1)
+        driver.find_element_by_name("rechargeAmount").send_keys("100")
+        driver.find_element_by_name("rechargeCount").send_keys("5")
+        driver.find_element_by_id("renewalsNumberCardButton").click()
+
+
 
